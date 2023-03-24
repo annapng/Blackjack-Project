@@ -1,3 +1,10 @@
+const betBtn = document.getElementById("bet")
+const standBtn = document.getElementById("stand")
+const hitBtn = document.getElementById("hit")
+let cardPlaceholder = document.getElementById("cardPlaceholder");
+
+const pngURL = "../assets/playing card pngs/black/"
+
 const cardDeck = require('../assets/node-card-deck');
 const { Card, Deck, Rank, Suit } = cardDeck;
 
@@ -26,6 +33,8 @@ const suits = [
 ]
 
 let cards = [];
+let hand = [];
+let dealer = [];
 
 ranks.forEach(rank => suits.forEach(suit => cards.push(new Card(rank, suit))));
 
@@ -35,18 +44,17 @@ const currentDeck = new Deck(0, 1, { cards })
 currentDeck.shuffle();
     // shuffle   
 
-let hand = [];
-let dealer = [];
 
-currentDeck.dealMul([hand, dealer], 5);
-    // deal 5 cards to both hands
 
-console.log(dealer); // All of Dealer's Cards
-console.log(dealer[0]); // Dealer's first card info
-console.log(dealer[0].rank.sortNum); // Value of card
+// currentDeck.dealMul([hand, dealer], 5);
+//     // deal 5 cards to both hands
 
-const sum = findValueofHand(dealer);
-console.log(sum);
+// console.log(dealer); // All of Dealer's Cards
+// console.log(dealer[0]); // Dealer's first card info
+// console.log(dealer[0].rank.sortNum); // Value of card
+
+// const sum = findValueofHand(dealer);
+// console.log(sum);
 
 // to find the value of a hand
 function findValueofHand( array ){
@@ -62,8 +70,8 @@ function findValueofHand( array ){
     return sum;
 }
 
-let cardPics = retrieveCardPNG(dealer);
-console.log(cardPics);
+// let cardPics = retrieveCardPNG(dealer);
+// console.log(cardPics);
 
 // send any array of Cards here and it'll spit out the corrensponding name of all of the cards' .png files!
 function retrieveCardPNG( array ) {
@@ -78,3 +86,17 @@ function retrieveCardPNG( array ) {
     return cardPics;
 
     };
+
+betBtn.onclick = function(){
+
+    currentDeck.dealMul([hand, dealer], 1);
+    let handPic = retrieveCardPNG(hand);
+    let dealerPic = retrieveCardPNG(dealer);
+    cardPlaceholder.innerHTML = `<img src="${pngURL}${handPic}"   />`;
+    console.log(pngURL);
+    console.log(handPic);
+
+
+}
+
+console.log("hi");
