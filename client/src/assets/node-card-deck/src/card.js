@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 const Rank = require('./rank.js');
 const Suit = require('./suit.js');
