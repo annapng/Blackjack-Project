@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 const Card = require('../card.js');
 const Rank = require('../rank.js');

@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 module.exports = class Rank {
 	constructor(_shortName, _longName, _sortNum) {
