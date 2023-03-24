@@ -1,4 +1,4 @@
-const cardDeck = require('node-card-deck');
+const cardDeck = require('../assets/node-card-deck');
 const { Card, Deck, Rank, Suit } = cardDeck;
 
 // Creating the deck with the correct values
