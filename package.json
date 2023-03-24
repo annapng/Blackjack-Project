@@ -17,6 +17,7 @@
         "concurrently": "^5.1.0"
     },
     "dependencies": {
-        "graphql": "^16.6.0"
+        "graphql": "^16.6.0",
+        "node-card-deck": "^1.0.6"
     }
 }
