@@ -25,6 +25,10 @@ function App() {
                 path="/profile"
                 element={<Profile />}
               />
+              <Route
+                path="/game"
+                element={<Game />}
+              />
             </Routes>
           </div>        
         </div>
