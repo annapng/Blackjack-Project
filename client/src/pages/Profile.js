@@ -5,3 +5,5 @@ import { useQuery, useMutation } from '@apollo/client';
 const Profile = () => {
     
 }
+
+export default Profile
