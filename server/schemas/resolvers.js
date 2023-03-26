@@ -1,13 +1,24 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Profile } = require('../models');
+const { countDocuments } = require('../models/Profile');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
       users: async () => {
-        return User.find()
+        return User.find().populate('profile');
+      },
+      user: async (parent, { username }) => {
+        return User.findOne({ username }).populate('profile');
+      },
+      me: async (parent, args, context) => {
+        if (context.user) {
+          return User.findOne({ _id: context.user._id });
+        }
+        throw new AuthenticationError('You need to be logged in!');
       },
     },
+  
 
 Mutation: {
     addUser: async (parent, { username, email, password }) => {
@@ -32,6 +43,44 @@ Mutation: {
 
       return { token, user };
     },
-},};
+    addProfileText: async (parent, { profileText }, context) => {
+      if (context.user) {
+        const profile = await Profile.create({
+          profileText,
+          profileAuthor: context.user.username,
+        });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },          
+          {$addToSet: { profile: profile._id }}
+        );
+        return profile;
+      }
+    },
+    createGame: async (parent, {_id, gamesPlayed }) => {
+      const game = await Profile.findOneAndUpdate(
+        { _id },
+        { $inc: { [gamesPlayed]: 1 } },
+        { new: true }
+      );
+      return game;
+    },
+    createWin: async (parent, {_id, wins }) => {
+      const winsWon = await Profile.findOneAndUpdate(
+        { _id },
+        { $inc: { [wins]: 1 } },
+        { new: true }
+      );
+      return winsWon;
+    },
+    createLoss: async (parent, {_id, losses }) => {
+      const loss = await Profile.findOneAndUpdate(
+        { _id },
+        { $inc: { [losses]: 1 } },
+        { new: true }
+      );
+      return loss;
+    },
+},
+};
 
 module.exports = resolvers;
