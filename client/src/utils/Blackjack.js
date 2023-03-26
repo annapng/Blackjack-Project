@@ -1,6 +1,12 @@
-const betBtn = document.getElementById("bet")
-const standBtn = document.getElementById("stand")
-const hitBtn = document.getElementById("hit")
+const betBtn = document.getElementById("bet");
+
+
+// window.onload = function(){ 
+    // wrapping the code in this prevents start up errors
+
+
+const standBtn = document.getElementById("stand");
+const hitBtn = document.getElementById("hit");
 let cardPlaceholder = document.getElementById("cardPlaceholder");
 
 const pngURL = "../assets/playing card pngs/black/"
@@ -87,16 +93,30 @@ function retrieveCardPNG( array ) {
 
     };
 
-betBtn.onclick = function(){
+function betFunc(){
+
 
     currentDeck.dealMul([hand, dealer], 1);
-    let handPic = retrieveCardPNG(hand);
-    let dealerPic = retrieveCardPNG(dealer);
+    let handPicHelper = retrieveCardPNG(hand);
+    let dealerPicHelper = retrieveCardPNG(dealer);
+
+    let handPic = pngURL + handPicHelper[0];
+    console.log(handPic);
+    
+
     cardPlaceholder.innerHTML = `<img src="${pngURL}${handPic}"   />`;
     console.log(pngURL);
-    console.log(handPic);
+    console.log(handPic[0]);
 
 
 }
 
 console.log("hi");
+
+betBtn.onclick = betFunc();
+
+
+//}; // end of window.onload
+
+
+
