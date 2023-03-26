@@ -1,7 +1,14 @@
 import React from 'react';
-import blackjack from '../utils/Blackjack';
+
+import blackjack from '../utils/Blackjack.js';
 
 function Game() {
+
+    // useEffect(() => {
+    //     htmlCode();
+    // })
+
+function htmlCode(){
     return(
         <div>
         <button id="bet" value="bet">Bet</button>
@@ -10,7 +17,7 @@ function Game() {
         <div id ="cardPlaceholder"> </div>
         </div>
 
-    )
+    )};
 }
 
 export default Game;
