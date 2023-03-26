@@ -1,5 +1,5 @@
 import React from 'react';
-import blackjack from './utils/Blackjack.js';
+// import blackjack from '../utils/Blackjack.js';
 
 function Game() {
     return(
