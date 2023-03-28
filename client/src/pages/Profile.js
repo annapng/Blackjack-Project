@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../utils/Auth';
-import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_SINGLE_USER } from '../utils/queries';
 import { ADD_PROFILE } from '../utils/mutations';
 
 const Profile = () => {
-    const { username: userParam } = useParams();
+    const { data } = useQuery(QUERY_SINGLE_USER);
+    console.log({data})
+    const username = data?.user || []
 
-    const { data } = useQuery(userParam ? QUERY_SINGLE_USER : QUERY_ME, {
-        variables: { username: userParam },
-    });
+    /*const [currentUser, setCurrentUser] = useState('');
+    console.log({username})
 
-    const user = data?.me || data?.singleUser || {};
+    const getCurrentUser = async function () {
+        const currentUser = await Parse.User.current();
+        // Update state variable holding current user
+        setCurrentUser(currentUser);
+        return currentUser;
+      };
 
+    /*
     const [profileText, setProfileText] = useState('');
-
 
     const [characterCount, setCharacterCount] = useState(0);
 
@@ -32,10 +38,10 @@ const Profile = () => {
                 console.error(e);
             }
 
-            // update me object's cache
-            const { me } = cache.readQuery({ query: QUERY_ME });
+            // update object's cache
+            const { me } = cache.readQuery({ query: QUERY_SINGLE_USER });
             cache.writeQuery({
-                query: QUERY_ME,
+                query: QUERY_SINGLE_USER,
                 data: { me: { ...me, profile: [...me.profile, addProfile] } },
             });
         },
@@ -65,32 +71,32 @@ const Profile = () => {
             setProfileText(value);
             setCharacterCount(value.length);
         }
-    };
+    };*/
 
     return (
         <section>
             <div>
                 <h2 class name="card-header">
-                    Welcome {userParam ? `${user.username}'s` : 'you'}
+                    Welcome {username}
                 </h2>
-                <p
+                {/*<p
                     className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
                         }`}
                 >
                     Character Count: {characterCount}/280
-                </p>
+                    </p>*/}
                 <form
                     className="flex-row justify-center justify-space-between-md align-center"
-                    onSubmit={handleFormSubmit}
+                    /*onSubmit={handleFormSubmit}*/
                 >
                     <div className="col-12 col-lg-9">
                         <textarea
                             name="ProfileText"
                             placeholder="About your playing style..."
-                            value={profileText}
+                            /*value= {profileText}*/
                             className="form-input w-100"
                             style={{ lineHeight: '1.5', resize: 'vertical' }}
-                            onChange={handleChange}
+                            /*onChange={handleChange}*/
                         ></textarea>
                     </div>
                     <div className="col-12 col-lg-3">
@@ -98,11 +104,11 @@ const Profile = () => {
                             Add Profile Info
                         </button>
                     </div>
-                    {error && (
+                    {/*error && (
                         <div className="col-12 my-3 bg-danger text-white p-3">
                             {error.message}
                         </div>
-                    )}
+                    )*/}
                 </form>
 
                 <ul>
