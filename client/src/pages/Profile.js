@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../utils/Auth';
-import { QUERY_SINGLE_USER } from '../utils/queries';
+import { QUERY_SINGLE_USER, QUERY_USERS } from '../utils/queries';
 import { ADD_PROFILE } from '../utils/mutations';
+import '../App.css';
 
 const Profile = () => {
-    const { data } = useQuery(QUERY_SINGLE_USER);
-    console.log({data})
-    const username = data?.user || []
+    const { loading, data } = useQuery(QUERY_USERS);
+    const users = data?.users || [];
+    useEffect(() => {
+        console.log(users)
+    }, 
+    )
 
+   
     /*const [currentUser, setCurrentUser] = useState('');
     console.log({username})
 
@@ -74,10 +79,10 @@ const Profile = () => {
     };*/
 
     return (
-        <section>
+        <section className='App-header'>
             <div>
-                <h2 class name="card-header">
-                    Welcome {username}
+                <h2 className="card-header">
+                    Welcome 
                 </h2>
                 {/*<p
                     className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
@@ -111,7 +116,7 @@ const Profile = () => {
                     )*/}
                 </form>
 
-                <ul>
+                <ul className='unstyled'>
                     <li>Games Played: </li>
                     <li>Games Won:</li>
                     <li>Games Lost:</li>

@@ -2,7 +2,7 @@ import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Signup from './pages/Signup.js';
 import Profile from './pages/Profile.js';
-import Game from './pages/Game.js';
+//import Game from './pages/Game.js';
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -13,6 +13,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -38,13 +39,13 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-    <Router>        
-    <div className="flex-column justify-flex-start min-100-vh">
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
           <div className="container">
             <Routes>
-              <Route 
-                path="/" 
-                element={<Home />}         
+              <Route
+                path="/"
+                element={<Home />}
               />
               <Route
                 path="/login"
@@ -55,17 +56,17 @@ function App() {
                 element={<Signup />}
               />
               <Route
-                path="/profile"
+                path="/profile/"
                 element={<Profile />}
               />
-              <Route
+              {/*<Route
                 path="/game"
                 element={<Game />}
-              />
+  />*/}
             </Routes>
-          </div>        
+          </div>
         </div>
-    </Router>
+      </Router>
     </ApolloProvider>
   );
 }
