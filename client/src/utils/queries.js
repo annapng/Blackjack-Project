@@ -7,45 +7,37 @@ query Query {
     username
     email
     password
-    profile {
-      _id
-      profileText
-      profileAuthor
-      gamesPlayed
-      wins
-      losses
-    }
+    profileText
+    gamesPlayed
+    wins
+    losses
   }
 }
 `;
 
 export const QUERY_SINGLE_USER = gql`
 query singleUser($username: String!) {
-    user(username: $username) {
-      _id
-      username
-      email
-      profile {
-        _id
-        profileText
-        profileAuthor
-        gamesPlayed
-        wins
-        losses
-      }
-    }
+  user(username: $username) {
+    _id
+    username
+    email
+    password
+    profileText
+    gamesPlayed
+    wins
+    losses
   }
+}
 `;
 
 export const QUERY_ME = gql`
-query me {
-  _id
-  username
-  email
-  profile {
+query Query {
+  me {
     _id
+    username
+    email
+    password
     profileText
-    profileAuthor
     gamesPlayed
     wins
     losses
