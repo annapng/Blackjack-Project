@@ -62,7 +62,7 @@ Mutation: {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    createGame: async (parent, {userId, gamesPlayed }, context) => {
+    createGame: async (parent, {userId}, context) => {
       if (context.user) {
       return User.findOneAndUpdate(
         { _id: userId },
@@ -71,20 +71,20 @@ Mutation: {
       );
       }
     },
-    createWin: async (parent, {userId, wins }, context) => {
+    createWin: async (parent, {userId }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
         { _id: userId },
-        { $inc: { [wins]: 1 } },
+        { $inc: { wins: 1 } },
         { new: true }
       );
         }
     },
-    createLoss: async (parent, {userId, losses }, context) => {
+    createLoss: async (parent, {userId }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
         { _id: userId },
-        { $inc: { [losses]: 1 } },
+        { $inc: { losses: 1 } },
         { new: true }
       );
         }
