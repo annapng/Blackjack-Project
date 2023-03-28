@@ -4,7 +4,7 @@ import DeckCreation from './Deck.js';
 import cardBack from '../../assets/playing card pngs/black back2.png';
 import returnImage from './Images.js';
 
-
+import '../../assets/styles/game.css';
 
 function StartGame() {
 
@@ -13,7 +13,8 @@ function StartGame() {
     Deck = DeckCreation();
         console.log(Deck);
 
-    const [cardImg, setCardImg] = useState(cardBack);
+    const [playerCardImg, setPlayerCardImg] = useState(cardBack);
+    const [dealerCardImg, setDealerCardImg] = useState(cardBack);
     
           let cardPngs = retrieveCardPNG(Deck.cards);
           console.log(cardPngs);
@@ -25,7 +26,7 @@ function StartGame() {
 
     const bet = () => {
 
-         setCardImg(img);
+         setPlayerCardImg(img);
       
     }
 
@@ -40,7 +41,9 @@ function StartGame() {
         <button id="hit" value="hit">Hit</button>
         <div id ="cardPlaceholder"> </div>
 
-        <img src={cardImg} />
+        <img id="card" src={playerCardImg} />
+        <img id="card" src={dealerCardImg} />
+
         </div>
 
     )
