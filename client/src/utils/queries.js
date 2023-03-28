@@ -37,3 +37,19 @@ query singleUser($username: String!) {
   }
 `;
 
+export const QUERY_ME = gql`
+query me {
+  _id
+  username
+  email
+  profile {
+    _id
+    profileText
+    profileAuthor
+    gamesPlayed
+    wins
+    losses
+  }
+}
+`;
+
