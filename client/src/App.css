@@ -28,6 +28,10 @@
   color: #61dafb;
 }
 
+.unstyled {
+  list-style-type: none;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -47,4 +51,37 @@
   100% {
       transform: translateY(10px);
   }
+}
+
+.toggleButton {
+  background-color: #FF5555 ; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 90px;
+  margin-top: 90px;
+  font-weight: bold;
+}
+
+.login {
+  text-decoration: none;
+  color:white;  
+  font-family: 'Playfair Display SC', serif;
+}
+
+.loginbox {
+  text-align: left;
+  flex-direction:  column ;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.boxclass {
+  border-style: solid;
+  display: inline-block;
+  border-color: #FF5555;
+  margin:40px;
 }

@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../utils/Auth';
-import { QUERY_SINGLE_USER } from '../utils/queries';
+import { QUERY_SINGLE_USER, QUERY_USERS, QUERY_ME } from '../utils/queries';
 import { ADD_PROFILE } from '../utils/mutations';
+import './profile.css';
 
 const Profile = () => {
-    const { data } = useQuery(QUERY_SINGLE_USER);
-    console.log({data})
-    const username = data?.user || []
-
+    const { loading, data } = useQuery(QUERY_USERS);
+    const users = data?.users || [];
+    useEffect(() => {
+        console.log(users)
+    }, 
+    )
     /*const [currentUser, setCurrentUser] = useState('');
     console.log({username})
 
@@ -74,10 +77,10 @@ const Profile = () => {
     };*/
 
     return (
-        <section>
-            <div>
-                <h2 class name="card-header">
-                    Welcome {username}
+        <section className='App-header'>
+            <div className="profile">
+                <h2 className="card-header">
+                    Welcome JoSmo!
                 </h2>
                 {/*<p
                     className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
@@ -89,18 +92,18 @@ const Profile = () => {
                     className="flex-row justify-center justify-space-between-md align-center"
                     /*onSubmit={handleFormSubmit}*/
                 >
-                    <div className="col-12 col-lg-9">
+                    <div className="profileBox">
                         <textarea
                             name="ProfileText"
                             placeholder="About your playing style..."
                             /*value= {profileText}*/
-                            className="form-input w-100"
-                            style={{ lineHeight: '1.5', resize: 'vertical' }}
+                            className="form-input w-200"
+                            style={{ lineHeight: '1.5', resize: 'both' }}
                             /*onChange={handleChange}*/
                         ></textarea>
                     </div>
                     <div className="col-12 col-lg-3">
-                        <button className="btn btn-primary btn-block py-3" type="submit">
+                        <button className="btnProfile" type="submit">
                             Add Profile Info
                         </button>
                     </div>
@@ -111,7 +114,7 @@ const Profile = () => {
                     )*/}
                 </form>
 
-                <ul>
+                <ul className='unstyled'>
                     <li>Games Played: </li>
                     <li>Games Won:</li>
                     <li>Games Lost:</li>
