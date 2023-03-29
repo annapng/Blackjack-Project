@@ -1,93 +1,112 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import '../App.css';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 
 const LoginForm = () => {
-    const [username, setUserName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [isSignUp, setIsSignUp] = useState(false);
+    const [ formState, setFormState] = useState({
+        username:'',
+        email:'',
+        password:''
+    });
+    const [ loginState, setLoginState] = useState({
+        login:'true',
+        email:'',
+        password:'' 
+    });
 
-    const handleSubmit = (e) => {
+    const [loginUser] = useMutation(LOGIN_USER);
+    const [signUpUser] = useMutation(ADD_USER);
+
+    useEffect(() =>
+    {
+        console.log(formState)
+    }, [formState])
+    useEffect(() =>
+    {
+        console.log(loginState)
+    }, [loginState])
+    
+
+    const handleSignUp = async (e) => {
         e.preventDefault();
+        console.log("signup:",formState)
+        try {
+            const { data } =
+            await signUpUser({
+                variables: {
+                    ...formState
+                }
+            })
+            console.log(data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
-        const data = { username, email, password };
-
-    //     fetch('/signup' , {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(data)
-    //     })
-
-    //     .then(response => { 
-        
-    //     })
-    //     .catch(error => {
-
-    //     })
-
-    //     console.log(`Email: ${email}, Password: ${password}, isSignup: ${isSignUp}`);
-
-    // };
-
-    // function handleUsernameChange(event) {
-    //     setUserName(event.target.value)
-    // }
-
-    // function handleEmailChange(event) {
-    //     setEmail(event.target.value);
-    // }
-
-    // function handlePasswordChange(event) {
-    //     setPassword(event.target.value);
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        console.log("login:",loginState)
+        try {
+            const { data } =
+        await loginUser({
+            variables: {
+                ...loginState
+            }
+        })
+        console.log(data)
+        document.location.replace("/game")
+    } catch (e) {
+        console.log(e)
+    }
     }
 
     return (
         <div className='App'>
         <div className='App-header'>
         <div className='loginbox'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignUp}>
         <div className='boxclass'>
         <label>
+            Username:
+            <input type="username" value={formState.username}
+            onChange={(e) => setFormState({ ...formState, username: e.target.value})} />
+        </label>
+        <br />
+        <label>
           Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" value={formState.email} 
+          onChange={(e) => setFormState({ ...formState, email: e.target.value})} />
         </label>
         <br />
         <label>
             Password:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" value={formState.password} 
+            onChange={(e) => setFormState({...formState, password: e.target.value})} />
         </label>
         <br />
-        <label>
-            Sign up!
-            <input type="checkbox" checked={isSignUp} onChange={(e) => setIsSignUp(e.target.value)} />
-        </label>
-        <br />
-        <button type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
+        <button type="submit">Sign up</button>
         </div>
+        </form>
 
         <div className='boxclass'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleLogin}>
         <label>
           Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" value={loginState.email} 
+          onChange={(e) => setLoginState({ ...loginState, email: e.target.value})} />
         </label>
         <br />
         <label>
             Password:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" value={loginState.password} 
+            onChange={(e) => setLoginState({ ...loginState, password: e.target.value})} />
         </label>
         <br />
-        <label>
-            Login!
-            <input type="checkbox" checked={isSignUp} onChange={(e) => setIsSignUp(e.target.value)} />
-        </label>
-        <br />
-        <button type="submit">{isSignUp ? 'Sign up' : 'Log in'}</button>
-        </form>
+        <button type="submit">Log in</button>
+        </form> 
         </div>
-        </form>
-        
-        
         </div>
         </div>
         </div>
