@@ -7,7 +7,8 @@ import { ADD_PROFILE } from '../utils/mutations';
 import './profile.css';
 
 const Profile = () => {
-    const { loading, data } = useQuery(QUERY_ME);
+    const { loading, data} = useQuery(QUERY_ME);  
+
     const user = data?.me || [];
 
     if(loading){
