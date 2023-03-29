@@ -28,9 +28,9 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addProfileText(userId: ID!, profileText: String!): User
     removeUser: User
-    createGame(_id: String!, gamesPlayed: Int!): User
-    createWin(_id: String!, wins: Int!): User
-    createLoss(_id: String!, losses: Int!): User
+    createGame(userId: ID!): User
+    createWin(userId: ID!): User
+    createLoss(userId: ID!): User
   }
   `;
 
