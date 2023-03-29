@@ -1,0 +1,22 @@
+.Game{
+    position: static;
+    width: 100%;
+    height: 100%;
+}
+
+.card{
+    width: 200px;
+}
+
+#cards{
+    
+    float: left;
+    position: absolute;
+    bottom: 0;    
+
+}
+
+#playCard {
+    
+
+}

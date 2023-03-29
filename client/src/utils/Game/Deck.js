@@ -43,7 +43,7 @@ const currentDeck = new Deck(0, 1, { cards })
 currentDeck.shuffle();
     // shuffle   
 
-  console.log(currentDeck);
+//  console.log(currentDeck);
 
  return currentDeck;
 
