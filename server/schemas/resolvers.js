@@ -15,7 +15,7 @@ const resolvers = {
         if (context.user) {
           return User.findOne({ username: context.user.username });
         }
-        throw new AuthenticationError('You need to be logged in!');
+        //throw new AuthenticationError('You need to be logged in!');
       },
       },
   
