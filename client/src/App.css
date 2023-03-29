@@ -74,7 +74,7 @@
 
 .loginbox {
   text-align: left;
-  flex-direction:  column ;
+  flex-direction: column ;
   display: flex;
   flex-wrap: wrap;
 }
