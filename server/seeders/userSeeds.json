@@ -2,11 +2,19 @@
     {
       "username": "JoSmo",
       "email": "jo@hey.com",
-      "password": "password01"
+      "password": "password01",
+      "profileText": "best player ever",
+      "gamesPlayed": 2,
+      "wins": 2,
+      "losses": 0
     },
     {
       "username": "JaneDoe",
       "email": "jane@hey.com",
-      "password": "password02"
+      "password": "password02",
+      "profileText": "I love to gamble",
+      "gamesPlayed": 4,
+      "wins": 2,
+      "losses": 2
     }
 ]

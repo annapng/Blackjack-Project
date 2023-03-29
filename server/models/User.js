@@ -20,11 +20,24 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  profile: [ {
-    type: Schema.Types.ObjectId,
-    ref: 'Profile',
+  profileText: {
+    type: String,
+    minlength: 1,
+    maxlength: 280,
+    trim: true
   },
-],
+  gamesPlayed: {
+    type: Number,
+    default: 0
+  },
+  wins: {
+    type: Number,
+    default: 0
+  },
+  losses: {
+    type: Number,
+    default: 0
+  },
 });
 
 // set up pre-save middleware to create password

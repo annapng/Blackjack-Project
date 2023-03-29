@@ -63,7 +63,7 @@ function App() {
               <Route
                 path="/game"
                 element={<Game />}
-                />
+              />
             </Routes>
           </div>
         </div>

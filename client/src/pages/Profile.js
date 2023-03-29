@@ -7,12 +7,14 @@ import { ADD_PROFILE } from '../utils/mutations';
 import './profile.css';
 
 const Profile = () => {
-    const { loading, data } = useQuery(QUERY_USERS);
-    const users = data?.users || [];
-    useEffect(() => {
-        console.log(users)
-    }, 
-    )
+    const { loading, data } = useQuery(QUERY_ME);
+    const user = data?.me || [];
+
+    if(loading){
+        return (
+            <h1>Loading...</h1>
+        )
+    }
     /*const [currentUser, setCurrentUser] = useState('');
     console.log({username})
 
@@ -80,7 +82,7 @@ const Profile = () => {
         <section className='App-header'>
             <div className="profile">
                 <h2 className="card-header">
-                    Welcome JoSmo!
+                   {user.username}
                 </h2>
                 {/*<p
                     className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''

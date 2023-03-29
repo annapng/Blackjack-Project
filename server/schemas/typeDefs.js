@@ -6,13 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    profile: [Profile]    
-  }
-
-  type Profile {
-    _id: ID
     profileText: String
-    profileAuthor: String
     gamesPlayed: Int
     wins: Int
     losses: Int
@@ -32,10 +26,11 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addProfileText(profileText: String!): Profile
-    createGame(_id: String!, gamesPlayed: Int!): Profile
-    createWin(_id: String!, wins: Int!): Profile
-    createLoss(_id: String!, losses: Int!): Profile
+    addProfileText(userId: ID!, profileText: String!): User
+    removeUser: User
+    createGame(userId: ID!): User
+    createWin(userId: ID!): User
+    createLoss(userId: ID!): User
   }
   `;
 

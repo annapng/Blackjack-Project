@@ -1,21 +1,21 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Profile } = require('../models');
+const { User } = require('../models');
 const { countDocuments } = require('../models/Profile');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
       users: async () => {
-        return User.find().populate('profile');
+        return User.find();
       },
       user: async (parent, { username }) => {
-        return User.findOne({ username }).populate('profile');
+        return User.findOne({ username });
       },
       me: async (parent, args, context) => {
         if (context.user) {
           return User.findOne({ username: context.user.username });
         }
-       // throw new AuthenticationError('You need to be logged in!');
+        throw new AuthenticationError('You need to be logged in!');
       },
       },
   
@@ -43,42 +43,51 @@ Mutation: {
 
       return { token, user };
     },
-    addProfileText: async (parent, { profileText }, context) => {
+    addProfileText: async (parent, { userId, profileText }, context) => {
       if (context.user) {
-        const profile = await Profile.create({
-          profileText,
-          profileAuthor: context.user.username,
-        });
-        await User.findOneAndUpdate(
-          { _id: context.user._id },          
-          {$addToSet: { profile: profile._id }}
+        return User.findOneAndUpdate(
+          { _id: userId },          
+          {$set: { profileText: profileText}},
+          {
+            new: true,
+            runValidators: true,
+          }
         );
-        return profile;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeUser: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOneAndDelete({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    createGame: async (parent, {userId}, context) => {
+      if (context.user) {
+      return User.findOneAndUpdate(
+        { _id: userId },
+        { $inc: { gamesPlayed: 1 } },
+        { new: true }
+      );
       }
     },
-    createGame: async (parent, {_id, gamesPlayed }) => {
-      const game = await Profile.findOneAndUpdate(
-        { _id },
-        { $inc: { [gamesPlayed]: 1 } },
+    createWin: async (parent, {userId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+        { _id: userId },
+        { $inc: { wins: 1 } },
         { new: true }
       );
-      return game;
+        }
     },
-    createWin: async (parent, {_id, wins }) => {
-      const winsWon = await Profile.findOneAndUpdate(
-        { _id },
-        { $inc: { [wins]: 1 } },
+    createLoss: async (parent, {userId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+        { _id: userId },
+        { $inc: { losses: 1 } },
         { new: true }
       );
-      return winsWon;
-    },
-    createLoss: async (parent, {_id, losses }) => {
-      const loss = await Profile.findOneAndUpdate(
-        { _id },
-        { $inc: { [losses]: 1 } },
-        { new: true }
-      );
-      return loss;
+        }
     },
 },
 };
