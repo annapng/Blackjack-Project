@@ -18,10 +18,10 @@ Naturals:
     If the dealer's face-up card is a ten-card or an ace, they look at their face-down card to see if the two cards make a natural. If the face-up card is not a ten-card or an ace, they do not look at the face-down card until it is the dealer's turn to play.
 
 The Play:
-    Player goes first and must decide whether to "stand" (not ask for another card) or "hit" (ask for another card in an attempt to get closer to a count or 21, or hit 21 exactly). If they hit, they will receive additional cards one at a time, until they stand on the total (if it is 21 or under) or go "bust" (if it is over 21). 
+    Player goes first and must decide whether to "stand" (not ask for another card) or "hit" (ask for another card in an attempt to get closer to a count or 21, or hit 21 exactly). If they hit, they will receive additional cards one at a time, until they stand on the total (if it is 21 or under) or go "bust" (if it is over 21).
 
 The Dealer's Play:
-    After the player has stood / settled on their count, they face their card up. If the total is 17 or more, they must stand. If the total is 16 or under, they must take a card. The dealer must continue to take cars until the total is 17 or more, at which point the dealer must stand. If the dealer has an ace, and counting it as 11 would bring the total to 17 or more (but not over 21), and they must count the ace as 11 and stand. 
+    After the player has stood / settled on their count, they face their card up. If the total is 17 or more, they must stand. If the total is 16 or under, they must take a card. The dealer must continue to take cards until the total is 17 or more, at which point the dealer must stand. If the dealer has an ace, and counting it as 11 would bring the total to 17 or more (but not over 21), and they must count the ace as 11 and stand. 
 
 Splitting Pairs (To Implement or not Implement?):
     If a player's first two cards are of the same denomination, such as two jacks or two sixes, they may choose to treat them as two seperate hands when their hand comes around. The amount of the original bet goes to one of the cards and an equal amount must be placed as a bet on the other card. The player first plays the hand to their left by standing or hitting, only then is the right hand played. The two hands are treated seperately. With a pair of aces, the player is given one card for each ace and may not draw again. If a ten-card is dealt to one of these aces, the payoff is equal to the bet (rather than 1.5).
