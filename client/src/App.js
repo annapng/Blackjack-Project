@@ -1,6 +1,6 @@
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
-import Signup from './pages/Signup.js';
+// import Signup from './pages/Signup.js';
 import Profile from './pages/Profile.js';
 import Game from './pages/Game.js';
 import Header from './components/header/index.js';
@@ -53,10 +53,10 @@ function App() {
                 path="/login"
                 element={<Login />}
               />
-              <Route
+              {/* <Route
                 path="/signup"
                 element={<Signup />}
-              />
+              /> */}
               <Route
                 path="/profile/:username"
                 element={<Profile />}

@@ -12,4 +12,25 @@
 .btnProfile {
     background-color: #ff5555;
     font-size: x-large;
+    color: white;
+    font-family: 'Playfair Display SC', serif;
+    cursor: crosshair;
+    caret-color: black;
+}
+
+.card-header {
+  font-weight: bold;
+  font-size: 80px;
+  text-decoration: underline;
+}
+
+.gameInfo {
+  font-weight: bold;
+  color: #4169E1;
+
+}
+
+.playerInfoBox {
+  border-style: solid;
+  display: inline-block;
 }
