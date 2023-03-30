@@ -3,10 +3,16 @@ import { findValueofCard, retrieveCardPNG } from './CardFunctions.js';
 import DeckCreation from './Deck.js';
 import cardBack from '../../assets/playing card pngs/black back2.png';
 import returnImage from './Images.js';
-
 import '../../assets/styles/game.css';
+import fx from 'fireworks';
+
+
 
 function StartGame() {
+
+
+    
+
 
     let Deck = [];
 
@@ -30,22 +36,27 @@ function StartGame() {
     const [hit3, sethitHidden3] = useState(true);
     const [hit4, sethitHidden4] = useState(true);
     const [startGame, setStartGame] = useState(false);
+    const [isBetDisabled, setBetDisabled] = useState(false);
     const [ishitDisabled, sethitDisabled] = useState(true);
     const [ishit2Disabled, sethit2Disabled] = useState(true);
     const [ishit3Disabled, sethit3Disabled] = useState(true);
     const [ishit4Disabled, sethit4Disabled] = useState(true);
     const [isstandDisabled, setstandDisabled] = useState(true);
     const [busted, setBusted] = useState(false);
+    const [hideEndGame, setHideEndGame] = useState(true);
     const [hideBust, setHideBust] = useState(true);
     const [hideLoser, setHideLoser] = useState(true);
     const [hideWinner, setHideWinner] = useState(true);
+    const [disablePlay, setDisablePlay] = useState(true);
+    const [hiddenPlay, setHiddenPlay] = useState(true);
 
+        
     const initialValue = 0;
     const playerCardValue = useRef(initialValue);
     const dealerCardValue = useRef(initialValue);
     const hiddenDealerCard = useRef('');
-
-
+    const playerAces = useRef(initialValue);
+    const dealerAces = useRef(initialValue);
 
         let cardPngs = retrieveCardPNG(Deck.cards);
       //  console.log(cardPngs);
@@ -63,6 +74,9 @@ function StartGame() {
 
     const updatePlayerValue = (value) => {
         
+        if (value === "A") {
+            playerAces.current++;
+        }
 
          let num1 = findValueofCard(value);
          console.log(num1);
@@ -82,6 +96,10 @@ function StartGame() {
       }
 
       const updateDealerValue = (value) => {
+
+        if (value === "A") {
+            dealerAces.current++;
+        }
 
         let num1 = findValueofCard(value);
         console.log(num1);
@@ -132,7 +150,7 @@ function StartGame() {
 
 
         setStartGame(true);
-        event.currentTarget.disabled = true;
+        setBetDisabled(true);
         sethitDisabled(false);
         setstandDisabled(false);
 
@@ -187,30 +205,28 @@ function StartGame() {
 
 
 
-        while(dealerCardValue.current <= 16){
 
-            setDealerCardImg3(cardArray[0]);
-            updateDealerValue(cardArray.value[0]);
-            cardArray.shift();
-            cardArray.value.shift();
+            while(dealerCardValue.current <= 16){
 
-            if (dealerCardValue.current >= 17) {            
-                break;
-            } 
+                setDealerCardImg3(cardArray[0]);
+                updateDealerValue(cardArray.value[0]);
+                cardArray.shift();
+                cardArray.value.shift();
 
-            setDealerCardImg4(cardArray[0]);
-            updateDealerValue(cardArray.value[0]);
-            cardArray.shift();
-            cardArray.value.shift();
+                if (dealerCardValue.current >= 17) {            
+                    break;
+                } 
 
-            setDealerCardImg4(cardArray[0]);
-            updateDealerValue(cardArray.value[0]);
-            cardArray.shift();
-            cardArray.value.shift();
+                setDealerCardImg4(cardArray[0]);
+                updateDealerValue(cardArray.value[0]);
+                cardArray.shift();
+                cardArray.value.shift();
 
-
-
-        }
+                setDealerCardImg4(cardArray[0]);
+                updateDealerValue(cardArray.value[0]);
+                cardArray.shift();
+                cardArray.value.shift();
+            }
 
         if (dealerCardValue.current >= 17){
             console.log('wow')
@@ -228,8 +244,15 @@ function StartGame() {
 
             if (output === dealerCardValue.current) {
                 setHideLoser(false);
+                setDisablePlay(false);
+                setHiddenPlay(false);
+                setHideEndGame(false);
             } else {
                 setHideWinner(false);
+                fireworks();
+                setDisablePlay(false);
+                setHiddenPlay(false);
+                setHideEndGame(false);
             }
 
         }
@@ -239,10 +262,16 @@ function StartGame() {
 
 const endGame = () => {
 
+    if (playerCardValue.current >= 11 && playerAces.current === 1 ){
+        playerCardValue.current = playerCardValue.current + 9;
+    }
 
-
-    if (playerCardValue === 21) {
+    if (playerCardValue.current === 21) {
         setHideWinner(false);
+        fireworks();
+        setDisablePlay(false);
+        setHiddenPlay(false);
+        setHideEndGame(false);
 
         sethitDisabled(true);
         sethit2Disabled(true);
@@ -260,27 +289,118 @@ const endGame = () => {
  
       // setBusted(true);
        setHideBust(false);
+       setDisablePlay(false);
+       setHiddenPlay(false);
+       setHideEndGame(false);
        
        sethitDisabled(true);
        sethit2Disabled(true);
        sethit3Disabled(true);
        sethit4Disabled(true);
        setstandDisabled(true);
-
-
      }
+
 }
 
+const reload = () => {
+
+    setPlayerCardImg(cardBack);
+    setDealerCardImg(cardBack);
+    setDealerCardImg2('');
+    setDealerCardImg3('');
+    setDealerCardImg4('');
+    setDealerCardImg5('');
+    setPlayerCardImg2('');
+    setPlayerCardImg3('');
+    setPlayerCardImg4('');
+    setPlayerCardImg5('');
+    sethitHidden1(false);
+    sethitHidden2(true);
+    sethitHidden3(true);
+    sethitHidden4(true);
+    setStartGame(false);
+    setBetDisabled(false);
+    sethitDisabled(true);
+    sethit2Disabled(true);
+    sethit3Disabled(true);
+    sethit4Disabled(true);
+    setstandDisabled(true);
+    setBusted(false);
+    setHideBust(true);
+    setHideLoser(true);
+    setHideWinner(true);
+    setDisablePlay(true);
+    setHiddenPlay(true);
+    setHideEndGame(true);
+
+    playerCardValue.current = initialValue;
+    dealerCardValue.current = initialValue;
+    hiddenDealerCard.current = '';
+    playerAces.current = initialValue;
+    dealerAces.current = initialValue;
+
+}
+
+const fireworks = () => {
+    let range = n => [...new Array(n)]
+
+    range(6).map(() =>
+    fx({
+        x: Math.random(window.innerWidth / 2) + window.innerWidth / 4,
+        y: Math.random(window.innerWidth / 2) + window.innerWidth / 4,
+        colors: ['#FFFFFF', '#000000', '#FF5555'],
+        count: 10,
+        canvasHeight: 800,
+        canvasWidth: 800
+    })  )
+
+    let range2 = n => [...new Array(n)]
+
+    range2(6).map(() =>
+    fx({
+        x: Math.random(window.innerWidth / 2) + window.innerWidth / 4,
+        y: Math.random(window.innerWidth / 2) + window.innerWidth / 4,
+        colors: ['#FFFFFF', '#000000', '#FF5555'],
+        count: 10,
+        canvasHeight: 800,
+        canvasWidth: 800,
+        canvasLeftOffset: 200,
+        canvasTopOffset: 20
+    })  )
+
+    let range3 = n => [...new Array(n)]
+
+    range3(6).map(() =>
+    fx({
+        x: Math.random(window.innerWidth / 2) + window.innerWidth / 4,
+        y: Math.random(window.innerWidth / 2) + window.innerWidth / 4,
+        colors: ['#FFFFFF', '#000000', '#FF5555'],
+        count: 10,
+        canvasHeight: 800,
+        canvasWidth: 800,
+        canvasLeftOffset: 0,
+        canvasTopOffset: 200
+    })  
+    )
+}
 
 
     return (
         <div className='Game'>
+
+        <div className="fireworkContainer">
+
+            <div className="mainButtons">
+        <div className="anotherButtonDiv">
         <button id="bet" 
+                className="buttons"
                 value="bet"
+                disabled={isBetDisabled}
                 onClick={bet}  
                       >Bet</button>
 
         <button id="stand" 
+                className="buttons"
                 value="stand" 
                 disabled={isstandDisabled}
                 onClick={stand}
@@ -288,6 +408,7 @@ const endGame = () => {
 
         <button id="hit" 
                 value="hit" 
+                className="buttons"
                 disabled={ishitDisabled}
                 onClick={hit}
                 hidden={hit1}
@@ -313,6 +434,11 @@ const endGame = () => {
                 disabled={ishit4Disabled}
                 hidden={hit4}
                 >Hit</button>
+        </div>
+        </div>
+        <div id="endGame" 
+            hidden={hideEndGame}>
+            <div id="innerEndGame">
 
         <div    id="busted"
                 hidden={hideBust}
@@ -332,16 +458,25 @@ const endGame = () => {
             YOU LOST
         </div>
 
-        <div id ="cardPlaceholder"> 
+        <button id="playAgain" 
+                value="playAgain" 
+                onClick={reload}
+                disabled={disablePlay}
+                hidden={hiddenPlay}
+                >Play Again!!!</button>
+        </div>
+        </div>
 
+        <div id="cardPlaceholder"> 
 
+        <div id="dealCards">
         <img className="card" id="dealCard" src={dealerCardImg} />
         <img className="card" id="dealCard" src={dealerCardImg2} />
         <img className="card" id="dealCard" src={dealerCardImg3} />
         <img className="card" id="dealCard" src={dealerCardImg4} />
         <img className="card" id="dealCard" src={dealerCardImg5} />
-
-
+        </div>
+        </div><div id="dealCardPlaceholder">
         
         <div id="cards">
         <img className="card" id="playCard" src={playerCardImg} />
@@ -351,6 +486,9 @@ const endGame = () => {
         <img className="card" id="playCard" src={playerCardImg5} />
         </div>
         </div>
+  
+        </div>
+
   
 
         </div>
