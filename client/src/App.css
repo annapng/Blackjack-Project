@@ -5,6 +5,9 @@
 
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -58,6 +61,14 @@
   }
 }
 
+@media only screen and (min-width: 480px) {
+  /* styles for devices with a minimum screen width of 480px */
+  }
+  
+  @media only screen and (max-width: 480px) {
+  /* styles for devices with a maximum screen width of 480px */
+  }
+
 .toggleButton {
   background-color: #FF5555 ; 
   border: none;
@@ -89,4 +100,12 @@
   display: inline-block;
   border-color: #FF5555;
   margin:40px;
+} 
+
+.footer {
+  position: absolute;
+  width: 50%;
+  bottom: 8px;
+  font-size: 80%;
+
 }
