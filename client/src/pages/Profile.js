@@ -54,21 +54,23 @@ const Profile = () => {
                 <h2 className="card-header">
                    Welcome {user.username}!
                 </h2>
+                <div className='playerInfoBox'>
                <div>
                 {user.profileText}
                </div>
                <div className="editProfile">
                 <EditProfile username = {user.username} />
                </div>
-                <ul className='unstyled'>
+                <ul className='gameInfo'>
                     <li>Games Played: {user.gamesPlayed}</li>
                     <li>Games Won: {user.wins}</li>
                     <li>Games Lost: {user.losses}</li>
                 </ul>
                 <div className="card-footer text-center m-3">
                     <Link to="/game">
-                        <button className="btnProfile">Play!</button>
+                        <button className="btnProfile">Back to the game</button>
                     </Link>
+                </div>
                 </div>
             </div>
         </section>
@@ -76,4 +78,4 @@ const Profile = () => {
 };
 
 
-export default Profile
+export default Profile;
