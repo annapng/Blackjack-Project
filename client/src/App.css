@@ -80,12 +80,15 @@
   font-size: 90px;
   margin-top: 90px;
   font-weight: bold;
+  
 }
 
 .login {
   text-decoration: none;
   color:white;  
   font-family: 'Playfair Display SC', serif;
+  word-break: break-all;
+  
 }
 
 .loginbox {
@@ -93,6 +96,7 @@
   flex-direction: column ;
   display: flex;
   flex-wrap: wrap;
+  word-break: break-all;
 }
 
 .boxclass {
@@ -100,6 +104,7 @@
   display: inline-block;
   border-color: #FF5555;
   margin:40px;
+  word-break: break-all;
 } 
 
 .footer {
@@ -108,4 +113,16 @@
   bottom: 8px;
   font-size: 80%;
 
+}
+
+.label {
+  word-break: break-all;
+}
+
+.input {
+  word-break: break-all;
+}
+
+.button {
+  word-break: break-all;
 }
