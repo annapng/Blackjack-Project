@@ -27,9 +27,8 @@ mutation addUser($username: String!, $email: String!, $password: String!) {
 `;
 
 export const ADD_PROFILE = gql`
-mutation addProfile($userId: ID!, $profileText: String!) {
-  addProfileText(userId: $userId, profileText: $profileText) {
-    _id
+mutation addProfile($username: String!, $profileText: String!) {
+  addProfileText(username: $username, profileText: $profileText) {
     username
     profileText
   }
@@ -45,27 +44,27 @@ mutation removeUser {
 `
 
 export const ADD_GAME = gql`
-mutation addGame($id: String!, $gamesPlayed: Int!) {
-  createGame(_id: $id, gamesPlayed: $gamesPlayed) {
-    _id
+mutation addGame($username: String!) {
+  createGame(username: $username) {
+    username
     gamesPlayed
   }
 }
   `;
 
 export const ADD_WIN = gql`
-mutation addWin($id: String!, $wins: Int!) {
-  createWin(_id: $id, wins: $wins) {
-    _id
+mutation addWin($username: String!) {
+  createWin(username: $username) {
+    username
     wins
   }
 }
 `;
 
 export const ADD_LOSS = gql`
-mutation addLoss($id: String!, $losses: Int!) {
-  createLoss(_id: $id, losses: $losses) {
-    _id
+mutation addLoss($username: String!) {
+  createLoss(username: $username) {
+    username
     losses
   }
 }
