@@ -43,10 +43,10 @@ Mutation: {
 
       return { token, user };
     },
-    addProfileText: async (parent, { userId, profileText }, context) => {
+    addProfileText: async (parent, { username, profileText }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
-          { _id: userId },          
+          { username: username },          
           {$set: { profileText: profileText}},
           {
             new: true,
@@ -62,28 +62,28 @@ Mutation: {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    createGame: async (parent, {userId}, context) => {
+    createGame: async (parent, {username}, context) => {
       if (context.user) {
       return User.findOneAndUpdate(
-        { _id: userId },
+        { username: username },
         { $inc: { gamesPlayed: 1 } },
         { new: true }
       );
       }
     },
-    createWin: async (parent, {userId }, context) => {
+    createWin: async (parent, {username }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
-        { _id: userId },
+        { username: username },
         { $inc: { wins: 1 } },
         { new: true }
       );
         }
     },
-    createLoss: async (parent, {userId }, context) => {
+    createLoss: async (parent, {username }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
-        { _id: userId },
+        { username: username },
         { $inc: { losses: 1 } },
         { new: true }
       );

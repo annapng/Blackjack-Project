@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
+import Auth from '../utils/Auth';
 
 const LoginForm = () => {
     const [ formState, setFormState] = useState({
@@ -55,6 +56,7 @@ const LoginForm = () => {
                 ...loginState
             }
         })
+        Auth.login(data.login.token);
         console.log(data)
         document.location.replace("/game")
     } catch (e) {
