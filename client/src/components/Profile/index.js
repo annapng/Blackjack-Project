@@ -8,6 +8,7 @@ import '../../pages/profile.css';
 const EditProfile = ({username}) => {
 
     const [profileText, setProfile] = useState('');
+    const [toggle, setToggle] = useState(false)
 
     const [addProfile] = useMutation(ADD_PROFILE);
 
@@ -18,14 +19,21 @@ const EditProfile = ({username}) => {
         const {data} = await addProfile({
           variables: { username, profileText },
         });
-  
         setProfile('');
+        window.location.reload()
+        setToggle(!toggle)
       } catch (err) {
         console.error(err);
       }
     };
 
+    const onClick = () => {
+      setToggle(!toggle)
+    }
+   
+    if (toggle) {
  return (
+  
     <form
     className="flex-row justify-center justify-space-between-md align-center"
     onSubmit={handleFormSubmit}
@@ -46,7 +54,11 @@ const EditProfile = ({username}) => {
                         </button>
                     </div>
          </form>
- )
+ )} else {
+  return <button onClick={onClick}className="btnProfile" type="submit">
+  Add/Edit Profile Info
+</button>
+ }
  };
 
  export default EditProfile;
