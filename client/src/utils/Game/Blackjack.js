@@ -5,6 +5,8 @@ import cardBack from '../../assets/playing card pngs/black back2.png';
 import returnImage from './Images.js';
 import '../../assets/styles/game.css';
 import fx from 'fireworks';
+import dealerPic from '../../assets/profile pictures/dealer.jpg';
+import bearPic from '../../assets/profile pictures/bear.png';
 
 
 
@@ -385,7 +387,24 @@ const fireworks = () => {
     return (
         <div className='Game'>
 
+        <div className="dealerImg">
+            <img id="dealerPic"
+                src={dealerPic} /> 
+            <div id="dealerText">DEALER</div>
+        </div>
+
+        <div className="playerImg">
+            <img id="playerPic"
+                src={bearPic} /> 
+            <div id="playerText">PLAYER</div>
+        </div>
+
+
+
+
         <div className="fireworkContainer">
+
+
 
             <div className="mainButtons">
         <div className="anotherButtonDiv">
