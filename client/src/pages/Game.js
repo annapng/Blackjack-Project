@@ -8,7 +8,7 @@ function Game() {
     <Header />
     <br></br>
     
-    <StartGame />;
+    <StartGame />
     </>
     )
 };
