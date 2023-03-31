@@ -61,17 +61,12 @@ i {
 }
 &:first-child {
     &::after {
-        content: 'HOME';
+        content: 'RULES';
     }
 }
 }
 
 
-a.rules-link {
-&::after {
-    content: 'RULES';
-}
-}
 a.coins-link {
 &::after {
     content: 'COINS';
@@ -88,15 +83,38 @@ a.logout-link {
 }
 }
 a.game-link {
-    &::after {
-        content: 'GAME';
-    }
+&::after {
+    content: 'GAME';
 }
+}
+
 a.active {
 svg {
     color: white;
 }
 }
+@media (max-width: 1350px) {
+    img {
+        max-width: 15vw;
+        height: auto;
+    
+    }
+}
+
+@media (max-width: 1075px) {
+    img {
+        max-width: 18vw;
+        height: auto;
+    }
+}
+
+@media (max-width: 850px) {
+    img {
+        max-width: 25vw;
+        height: auto;
+    }
+}
+
 }
 }
 
