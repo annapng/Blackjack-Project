@@ -14,6 +14,9 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Rules from './pages/Rules.js';
+import Coins from './pages/Coins.js';
+import Logout from './pages/Logout.js';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -64,6 +67,18 @@ function App() {
               <Route
                 path="/game"
                 element={<Game />}
+              />
+              <Route
+                path="/rules"
+                element={<Rules />}
+              />
+              <Route
+                path="/coins"
+                element={<Coins />}
+              />
+              <Route
+                path="/logout"
+                element={<Logout />}
               />
             </Routes>
           </div>
