@@ -28,6 +28,10 @@
 .gameInfo {
   font-weight: bold;
   color: #4169E1;
+  list-style-type: none;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 
 }
 
