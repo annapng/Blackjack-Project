@@ -1,5 +1,5 @@
 .App-header {
-    background-color: #282c34;
+    background-image: url("../assets/texture2.jpg");
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -22,11 +22,16 @@
   font-weight: bold;
   font-size: 80px;
   text-decoration: underline;
+  word-break: break-all;
 }
 
 .gameInfo {
   font-weight: bold;
   color: #4169E1;
+  list-style-type: none;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 
 }
 
