@@ -10,6 +10,13 @@ const Rules = () => {
        <h1>Blackjack Rules for Easy Reference</h1>
         <br>
         </br>
+        <div id="gambling">
+            <h1>If you or someone you 
+know has a gambling 
+problem, help is 
+available. Contact the 
+Problem Gambling Helpline at (800)-522-4700</h1>
+        </div>
 <div id="bodyText">
 
 <h2>Object of the Game:</h2>
