@@ -5,6 +5,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
 import { ADD_PROFILE } from '../utils/mutations';
 import './profile.css';
+import Header from '../components/header';
 
 import EditProfile from '../components/Profile/index';
 
@@ -49,6 +50,10 @@ const Profile = () => {
     };
 
     return (
+        <>
+        <Header />
+        <br></br>
+        
         <section className='App-header'>
             <div className="profile">
                 <h2 className="card-header">
@@ -74,6 +79,7 @@ const Profile = () => {
                 </div>
             </div>
         </section>
+        </>
     )
 };
 
