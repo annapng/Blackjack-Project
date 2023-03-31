@@ -10,9 +10,7 @@ const Header = () => (
         <nav>
         <img src={Logo} alt="logo"></img>
         <div className="container">
-           <NavLink exact="true" activeclassname="active" to="/">
-                <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
-           </NavLink>
+        
            <NavLink exact="true" activeclassname="active" className="rules-link" to="/rules">
                 <FontAwesomeIcon icon={faPencilSquare} color="#4d4d4e" />
            </NavLink>
@@ -22,7 +20,7 @@ const Header = () => (
            <NavLink exact="true" activeclassname="active" className="profile-link" to="/profile/:username">
                 <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
            </NavLink>
-           <NavLink exact="true" activeclassname="active" className="logout-link" to="/logout">
+           <NavLink exact="true" activeclassname="active" className="logout-link" to="/">
                 <FontAwesomeIcon icon={faSignOut} color="#4d4d4e" />
            </NavLink>
            <NavLink exact="true" activeclassname="active" className="game-link" to="/game">
