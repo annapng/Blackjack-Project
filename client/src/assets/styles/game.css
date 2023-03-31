@@ -42,7 +42,7 @@ button:hover{
 }
 
 .card{
-    max-width: 15vw;
+    max-width: 12.5vw;
     height: auto;
     width: 100%;
     padding: 5px;
@@ -122,7 +122,7 @@ button:hover{
 
 @media (max-width: 1350px) {
     .card{
-        max-width: 20vw;
+        max-width: 15vw;
         height: auto;
         width: 100%;
     }
@@ -135,7 +135,7 @@ button:hover{
 
   @media (max-width: 1075px) {
     .card{
-        max-width: 25vw;
+        max-width: 18vw;
         height: auto;
         width: 100%;
     }
@@ -148,7 +148,7 @@ button:hover{
 
   @media (max-width: 850px) {
     .card{
-        max-width: 30vw;
+        max-width: 25vw;
         height: auto;
         width: 100%;
     }

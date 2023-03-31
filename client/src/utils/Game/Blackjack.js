@@ -49,8 +49,6 @@ function StartGame() {
     const [hideWinner, setHideWinner] = useState(true);
     const [disablePlay, setDisablePlay] = useState(true);
     const [hiddenPlay, setHiddenPlay] = useState(true);
-
-        
     const initialValue = 0;
     const playerCardValue = useRef(initialValue);
     const dealerCardValue = useRef(initialValue);
@@ -383,7 +381,6 @@ const fireworks = () => {
     })  
     )
 }
-
 
     return (
         <div className='Game'>
