@@ -14,9 +14,7 @@ const Header = () => (
            <NavLink exact="true" activeclassname="active" className="rules-link" to="/rules">
                 <FontAwesomeIcon icon={faPencilSquare} color="#4d4d4e" />
            </NavLink>
-           <NavLink exact="true" activeclassname="active" className="coins-link" to="/coins">
-                <FontAwesomeIcon icon={faUsd} color="#4d4d4e" />
-           </NavLink>
+           
            <NavLink exact="true" activeclassname="active" className="profile-link" to="/profile/:username">
                 <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
            </NavLink>
