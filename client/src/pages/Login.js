@@ -17,8 +17,10 @@ const LoginForm = () => {
         password:'' 
     });
 
+    
     const [loginUser] = useMutation(LOGIN_USER);
     const [signUpUser] = useMutation(ADD_USER);
+
 
     useEffect(() =>
     {
@@ -40,6 +42,7 @@ const LoginForm = () => {
                     ...formState
                 }
             })
+            setFormState({ username:"", email:"", password:""})
             console.log(data)
         } catch (e) {
             console.log(e)
