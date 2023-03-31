@@ -74,19 +74,19 @@ const LoginForm = () => {
         <form onSubmit={handleSignUp}>
         <div className='boxclass'>
         <label>
-            Username:
+            Username: 
             <input type="username" value={formState.username}
             onChange={(e) => setFormState({ ...formState, username: e.target.value})} />
         </label>
         <br />
         <label>
-          Email:
+          Email: 
           <input type="email" value={formState.email} 
           onChange={(e) => setFormState({ ...formState, email: e.target.value})} />
         </label>
         <br />
         <label>
-            Password:
+            Password: 
             <input type="password" value={formState.password} 
             onChange={(e) => setFormState({...formState, password: e.target.value})} />
         </label>
