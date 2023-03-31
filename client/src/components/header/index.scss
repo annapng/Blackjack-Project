@@ -67,11 +67,8 @@ i {
 }
 
 
-a.coins-link {
-&::after {
-    content: 'COINS';
-}
-}
+
+
 a.profile-link {
 &::after {
     content: 'PROFILE';
