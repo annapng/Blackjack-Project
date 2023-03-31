@@ -43,10 +43,10 @@
   display: inline-block;
   border-color: #FF5555;
   margin:40px;
+  border-radius: 10%;
   word-break: break-all;
   width: 500px;
   height: auto;
   padding: 40px;
   backdrop-filter: blur(4px);
-
 }
