@@ -35,6 +35,8 @@ body {
     border-style: solid;
     display: inline-block;
     position: fixed;
-    top: 1em;
-    right: 1em;
+    top: 11em;
+    right: 0em;
+    font-size: 45%;
+    width: 200px;
 }
