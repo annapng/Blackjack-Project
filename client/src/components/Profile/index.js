@@ -19,8 +19,8 @@ const EditProfile = ({username}) => {
         const {data} = await addProfile({
           variables: { username, profileText },
         });
-       // setProfile('');
-       // window.location.reload()
+       setProfile('');
+       window.location.reload()
         setToggle(!toggle)
       } catch (err) {
         console.error(err);
