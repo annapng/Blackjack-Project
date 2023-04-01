@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_SINGLE_USER, QUERY_ME } from '../../utils/queries';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import { ADD_PROFILE } from '../../utils/mutations';
 import '../../pages/profile.css';
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { REMOVE_USER } from '../../utils/mutations';
 import '../../pages/profile.css';
