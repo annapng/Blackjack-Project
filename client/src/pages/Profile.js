@@ -1,53 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
-//import Auth from '../utils/Auth';
-import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
-import { ADD_PROFILE } from '../utils/mutations';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
 import './profile.css';
 import Header from '../components/header';
 
 import EditProfile from '../components/Profile/index';
+import RemoveUser from '../components/RemoveUser';
 
-const Profile = () => {   
-      /*const { username } = useParams();
+const Profile = () => {     
 
-    const { loading, data } = useQuery(
-      username ? QUERY_SINGLE_USER : QUERY_ME,
-      {
-        variables: { username: username },
-      }
-    );
-  
-     const user = data?.me || data?.user || {};
 
-     if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
-        return <Navigate to="/profile/:username" />;
-      }
-    
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-
-    if (user?.user) {
-        return (
-          <h4>
-            You need to be logged in to see your profile page. Use the navigation
-            links above to sign up or log in!
-          </h4>
-        );
-      }*/
-  
-    
     const { loading, data} = useQuery(QUERY_ME);  
 
     const user = data?.me || [];
+
+    useEffect(() => {
+        console.log("user")
+      
+      }, [])
 
     if(loading){
         return (
             <h1>Loading...</h1>
         )
     };
+   
 
     return (
         <>
@@ -67,7 +45,7 @@ const Profile = () => {
                 <EditProfile username = {user.username} />
                </div>
                 <ul className='gameInfo'>
-                    <li>Games Played: {user.gamesPlayed}</li>
+                    <li>Games Played: {user.wins + user.losses}</li>
                     <li>Games Won: {user.wins}</li>
                     <li>Games Lost: {user.losses}</li>
                 </ul>
@@ -76,6 +54,9 @@ const Profile = () => {
                         <button className="btnProfile">Back to the game</button>
                     </Link>
                 </div>
+                <RemoveUser
+                userId={user._id}
+                />
                 </div>
             </div>
         </section>

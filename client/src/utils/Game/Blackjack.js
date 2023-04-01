@@ -7,6 +7,10 @@ import '../../assets/styles/game.css';
 import fx from 'fireworks';
 import dealerPic from '../../assets/profile pictures/dealer.jpg';
 import bearPic from '../../assets/profile pictures/bear.png';
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_ME } from '../queries.js';
+import { ADD_WIN, ADD_LOSS } from '../mutations.js';
+
 
 
 
@@ -57,6 +61,18 @@ function StartGame() {
     const hiddenDealerCard = useRef('');
     const playerAces = useRef(initialValue);
     const dealerAces = useRef(initialValue);
+    const [addWin] = useMutation(ADD_WIN);
+    const [addLoss] = useMutation(ADD_LOSS);
+
+    const { loading, data} = useQuery(QUERY_ME);  
+
+    const user = data?.me || [];
+
+    if(loading){
+        return (
+            <h1>Loading...</h1>
+        )
+    };
 
         let cardPngs = retrieveCardPNG(Deck.cards);
       //  console.log(cardPngs);
@@ -241,13 +257,22 @@ function StartGame() {
             const output = values.reduce((prev, curr) => Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev);
 
             console.log(output);
-
             if (output === dealerCardValue.current) {
+                //send loss to DB
+                addLoss({
+                    variables: { username:user.username }
+                })
+                console.log(addLoss, "row264")
                 setHideLoser(false);
                 setDisablePlay(false);
                 setHiddenPlay(false);
                 setHideEndGame(false);
             } else {
+                //send add win to DB
+                addWin({
+                    variables: { username:user.username }
+                })
+                console.log(addWin, "row275")
                 setHideWinner(false);
                 fireworks();
                 setDisablePlay(false);
@@ -261,12 +286,15 @@ function StartGame() {
 
 
 const endGame = () => {
-
     if (playerCardValue.current >= 11 && playerAces.current === 1 ){
         playerCardValue.current = playerCardValue.current + 9;
     }
 
     if (playerCardValue.current === 21) {
+        addWin({
+            variables: { username:user.username }
+        })
+        console.log(addWin)
         setHideWinner(false);
         fireworks();
         setDisablePlay(false);
@@ -288,6 +316,10 @@ const endGame = () => {
        console.log('end game')
  
       // setBusted(true);
+      addLoss({
+        variables: { username:user.username }
+    })
+        console.log(addLoss)
        setHideBust(false);
        setDisablePlay(false);
        setHiddenPlay(false);
@@ -389,14 +421,14 @@ const fireworks = () => {
 
         <div className="dealerImg">
             <img id="dealerPic"
-                src={dealerPic} /> 
+                src={dealerPic} alt="bearpic"/> 
             <div id="dealerText">DEALER</div>
         </div>
 
         <div className="playerImg">
             <img id="playerPic"
-                src={bearPic} /> 
-            <div id="playerText">PLAYER</div>
+                src={bearPic} alt="playerpic"/> 
+            <div id="playerText">{user.username}</div>
         </div>
 
 

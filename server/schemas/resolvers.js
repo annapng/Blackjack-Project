@@ -72,6 +72,7 @@ Mutation: {
       }
     },
     createWin: async (parent, {username }, context) => {
+      console.log(context.user)
       if (context.user) {
         return User.findOneAndUpdate(
         { username: username },
@@ -81,6 +82,7 @@ Mutation: {
         }
     },
     createLoss: async (parent, {username }, context) => {
+      console.log(context.user)
       if (context.user) {
         return User.findOneAndUpdate(
         { username: username },
