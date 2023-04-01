@@ -8,6 +8,9 @@ import Header from '../components/header';
 import EditProfile from '../components/Profile/index';
 import RemoveUser from '../components/RemoveUser';
 
+
+// window.location.reload()
+
 const Profile = () => {     
 
 
@@ -16,8 +19,7 @@ const Profile = () => {
     const user = data?.me || [];
 
     useEffect(() => {
-        console.log("user")
-      
+        
       }, [])
 
     if(loading){
