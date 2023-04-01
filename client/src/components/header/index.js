@@ -15,7 +15,7 @@ const Header = () => (
                 <FontAwesomeIcon icon={faPencilSquare} color="#4d4d4e" />
            </NavLink>
            
-           <NavLink exact="true" activeclassname="active" className="profile-link" onClick={() => {window.location.href="profile/:username"}} to="/profile/:username">
+           <NavLink exact="true" activeclassname="active" className="profile-link" onClick={() => {window.location.href="/profile/:username"}}>
                 <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
            </NavLink>
            <NavLink exact="true" activeclassname="active" className="logout-link" to="/">

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import './profile.css';
@@ -8,19 +8,12 @@ import Header from '../components/header';
 import EditProfile from '../components/Profile/index';
 import RemoveUser from '../components/RemoveUser';
 
-
-// window.location.reload()
-
 const Profile = () => {     
 
 
     const { loading, data} = useQuery(QUERY_ME);  
 
     const user = data?.me || [];
-
-    useEffect(() => {
-        
-      }, [])
 
     if(loading){
         return (
