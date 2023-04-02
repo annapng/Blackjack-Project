@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './index.scss'
 import Logo from '../../assets/logo.png'
+import '../../App.css'
 
 const Header = () => (
   <div className='nav-bar'>

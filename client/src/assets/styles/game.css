@@ -180,6 +180,18 @@ button{
         max-width: 70vw;
         max-height: 40vw;
     }
+    .dealerPic{
+        max-width: 70vw;
+        max-height: 40vw;
+    }
+    .playerPic{
+        max-width: 70vw;
+        max-height: 40vw;  
+    }
+    .anotherButtonDiv{
+        max-width: 70vw;
+        max-height: 40vw;  
+    }
   }
 
   @media (max-width: 1075px) {
@@ -188,10 +200,15 @@ button{
         height: auto;
         width: 100%;
     }
-
     #innerEndGame{
         max-width: 80vw;
         max-height: 50vw;
+    }
+    #playerText{
+        visibility: hidden;
+    }
+    #dealerText{
+        visibility: hidden;
     }
   }
 
@@ -201,10 +218,12 @@ button{
         height: auto;
         width: 100%;
     }
-
     #innerEndGame{
         max-width: 90vw;
         max-height: 50vw;
+    }
+    #playerPic{
+        visibility: hidden; 
     }
 
   }

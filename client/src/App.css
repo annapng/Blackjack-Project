@@ -67,6 +67,9 @@
   
   @media only screen and (max-width: 480px) {
   /* styles for devices with a maximum screen width of 480px */
+  body {
+    width: 480px;
+}
   }
 
 .toggleButton {

@@ -34,7 +34,7 @@ body {
 #gambling {
     border-style: solid;
     display: inline-block;
-    position: fixed;
+    /*position: fixed;*/
     top: 11em;
     right: 0em;
     font-size: 45%;
