@@ -73,6 +73,7 @@ function StartGame() {
             <h1>Loading...</h1>
         )
     };
+    
 
         let cardPngs = retrieveCardPNG(Deck.cards);
       //  console.log(cardPngs);
@@ -289,6 +290,11 @@ const endGame = () => {
     if (playerCardValue.current >= 11 && playerAces.current === 1 ){
         playerCardValue.current = playerCardValue.current + 9;
     }
+
+    if (playerCardValue.current === 10 && playerAces.current === 1) {
+        playerCardValue.current = 21;
+    }
+
 
     if (playerCardValue.current === 21) {
         addWin({
