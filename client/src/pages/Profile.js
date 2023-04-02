@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import './profile.css';
+import '../App.css'
 import Header from '../components/header';
 
 import EditProfile from '../components/Profile/index';

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_PROFILE } from '../../utils/mutations';
 import '../../pages/profile.css';
+import '../../App.css'
 
 const EditProfile = ({username}) => {
 
