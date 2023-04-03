@@ -21,7 +21,7 @@ app.use(express.json());
 //   app.use(express.static(path.join(__dirname, '../client/build')));
 // }
 
-if (process.env.NODE_ENV) {
+if(process.env.NODE_ENV) {
   //static folder add
    app.use(express.static('app/client/build'));
    app.get("/", function (req, res) {
