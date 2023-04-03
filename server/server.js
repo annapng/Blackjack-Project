@@ -24,8 +24,8 @@ app.use(express.json());
 if(process.env.NODE_ENV) {
   //static folder add
    app.use(express.static('app/client/build'));
-   app.get("/", function (req, res) {
-   res.sendFile(path.resolve(__dirname , '../client/build/index.html'));
+   app.get("*", function (req, res) {
+   res.sendFile(path.resolve(__dirname , "app/client/build", "index.html"));
     });
   }
 
