@@ -1,0 +1,230 @@
+/* Fonts 
+
+font-family: 'Monoton', cursive;
+font-family: 'Playfair Display SC', serif;
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Playfair+Display+SC&display=swap');
+
+body {
+    background-image: url("../texture2.jpg");
+    background-color: darkslategrey;
+    background-repeat: no-repeat;
+    background-attachment: fixed, scroll;
+    background-size: cover;
+    overflow:hidden;
+}
+
+.Game{
+    width: 100%;
+    height: 100%;
+}
+
+button{
+    font-family: 'Playfair Display SC', serif;
+    font-size: 4vh;
+    background-color: white;
+}
+
+#cardPlaceholder{
+    display: flex;
+    justify-content: center;
+}
+
+#dealCardPlaceholder{
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    max-width: 12.5vw;
+    height: auto;
+    width: 100%;
+    padding: 5px;
+    transition: linear 0.5s;
+    z-index: 4;
+}
+
+.card:hover{
+    transform: rotateY(180deg);
+    backdrop-filter: blur(20px);
+}
+
+#cards{
+    position: absolute;
+    bottom: 5%;    
+}
+
+
+.mainButtons {
+
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+}
+
+.anotherButtonDiv {
+    position: fixed;
+    bottom: 0;
+}
+
+
+#cards{
+    position: absolute;
+    bottom: 6%;    
+}
+
+#endGame{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    font-family: 'Monoton', cursive;
+    font-size: 10vh;
+    color: white;
+    text-align: center;
+    
+}
+
+#innerEndGame{
+
+    backdrop-filter: blur(20px);
+    max-width: 50vw;
+    max-height: 20vw;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 50%;
+    border-style: groove;
+    border-color: white;
+    border-width: 20px;
+    transition: all 500ms ease;
+}
+
+.dealerPic {
+    position: relative;
+    text-align: center;
+    color: white;
+    
+}
+
+#dealerPic {
+    border-radius: 50%;
+    width: 18%;
+    height: auto;
+    position: fixed;
+    right: 10%;
+    z-index: -1;
+    
+}
+
+#dealerText {
+    position: fixed;
+    z-index: 10;
+    right: 5%;
+    font-size: 5vh;
+    font-family: 'Monoton', cursive;
+    text-shadow: black 3px 3 10px;
+}
+
+
+.playerPic {
+    position: relative;
+    text-align: center;
+    color: white;
+    
+}
+
+#playerPic {
+    border-radius: 50%;
+    width: 18%;
+    height: auto;
+    position: fixed;
+    left: 10%;
+    bottom: 0%;
+    z-index: -1;
+}
+
+#playerText {
+    position: fixed;
+    z-index: 10;
+    left: 5%;
+    bottom: 0%;
+    font-size: 5vh;
+    font-family: 'Monoton', cursive;
+    text-shadow: black 3px 3 10px;
+}
+
+
+
+@media (max-width: 1350px) {
+    .card{
+        max-width: 15vw;
+        height: auto;
+        width: 100%;
+    }
+
+    #innerEndGame{
+        max-width: 70vw;
+        max-height: 40vw;
+    }
+    .dealerPic{
+        max-width: 70vw;
+        max-height: 40vw;
+    }
+    .playerPic{
+        max-width: 70vw;
+        max-height: 40vw;  
+    }
+    .anotherButtonDiv{
+        max-width: 70vw;
+        max-height: 40vw;  
+    }
+  }
+
+  @media (max-width: 1075px) {
+    .card{
+        max-width: 18vw;
+        height: auto;
+        width: 100%;
+    }
+    #innerEndGame{
+        max-width: 80vw;
+        max-height: 50vw;
+    }
+    #playerText{
+        visibility: hidden;
+    }
+    #dealerText{
+        visibility: hidden;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .card{
+        max-width: 25vw;
+        height: auto;
+        width: 100%;
+    }
+    #innerEndGame{
+        max-width: 90vw;
+        max-height: 50vw;
+    }
+    #playerPic{
+        visibility: hidden; 
+    }
+
+  }

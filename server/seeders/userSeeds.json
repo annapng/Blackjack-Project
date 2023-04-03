@@ -1,0 +1,20 @@
+[
+    {
+      "username": "JoSmo",
+      "email": "jo@hey.com",
+      "password": "password01",
+      "profileText": "I am forever the best player ever",
+      "gamesPlayed": 2,
+      "wins": 2,
+      "losses": 0
+    },
+    {
+      "username": "JaneDoe",
+      "email": "jane@hey.com",
+      "password": "password02",
+      "profileText": "I love to gamble - YEEHAW",
+      "gamesPlayed": 4,
+      "wins": 2,
+      "losses": 2
+    }
+]

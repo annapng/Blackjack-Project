@@ -1,0 +1,42 @@
+/* Fonts 
+
+font-family: 'Monoton', cursive;
+font-family: 'Playfair Display SC', serif;
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Playfair+Display+SC&display=swap');
+
+h1 {
+    font-family: 'Playfair Display SC', serif;
+}
+
+h2 {
+    font-family: 'Playfair Display SC', serif;
+}
+
+body {
+    overflow-y: scroll;
+    color: white;
+
+    text-align: center;
+
+
+}
+
+#bodyText {
+    font-size: 1em;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+#gambling {
+    border-style: solid;
+    display: inline-block;
+    /*position: fixed;*/
+    top: 11em;
+    right: 0em;
+    font-size: 45%;
+    width: 200px;
+}
