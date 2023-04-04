@@ -1,18 +1,18 @@
 //"use strict";
 
-export default class Rank {
-	constructor(_shortName, _longName, _sortNum) {
-		this.shortName = _shortName;
-		this.longName = _longName;
-		this.sortNum = _sortNum;
+// export default class Rank {
+// 	constructor(_shortName, _longName, _sortNum) {
+// 		this.shortName = _shortName;
+// 		this.longName = _longName;
+// 		this.sortNum = _sortNum;
 
-		Object.freeze(this);
-	}
-}
+// 		Object.freeze(this);
+// 	}
+// }
 
 
-/*module.exports = Rank(shortName, longName, sortNum) {
+module.exports = function Rank(shortName, longName, sortNum) {
 	this.shortName = shortName;
 	this.longName = longName;
 	this.sortNum = sortNum;
-}*/
+}
