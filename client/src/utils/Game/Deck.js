@@ -2,8 +2,17 @@ import React, { useState, useEffect } from 'react';
 
 function DeckCreation( deck ) {
 
-const cardDeck = require('../../assets/node-card-deck');
-const { Card, Deck, Suit } = cardDeck;
+
+
+class Suit {
+	constructor(_name, _shortName, _sortNum) {
+		this.name = _name;
+		this.shortName = _shortName;
+		this.sortNum = _sortNum;
+
+		Object.freeze(this);
+	}
+}
 
 class Rank {
 	constructor(_shortName, _longName, _sortNum) {
@@ -17,7 +26,7 @@ class Rank {
 
 // Creating the deck with the correct values
 const ranks = [
-	{shortName: '2', longName: "Two", sortNum: 2},
+	new Rank('2', 'Two', 2),
 	new Rank('3', 'Three', 3),
 	new Rank('4', 'Four', 4),
 	new Rank('5', 'Five', 5),
@@ -39,11 +48,91 @@ const suits = [
 	new Suit('Spade', '\u2664', 1)
 ]
 
+
+class Card {
+	constructor(_rank, _suit) {
+
+		this.rank = _rank;
+		this.suit = _suit;
+
+		Object.freeze(this);
+	}
+
+	get displayShort() {
+		if (this.rank.shortName === 'Joker') return `Joker`
+		else return `${this.rank.shortName}${this.suit.shortName}`;
+	}
+
+	get displayText() {
+		if (this.rank.shortName === 'Joker') return `Joker`
+		else return `${this.rank.longName} of ${this.suit.name}`;
+	}
+}
+
 let cards = [];
-let hand = [];
-let dealer = [];
 
 ranks.forEach(rank => suits.forEach(suit => cards.push(new Card(rank, suit))));
+
+class Deck {
+	constructor( _numOfDecks = 1, _deck = { cards }) {
+
+		  
+
+		for (let i = 0; i < _numOfDecks; i++) {
+			cards.push(..._deck.cards);
+		}
+
+		this.cards = cards;
+		this.initialCards = [...this.cards];
+	}
+
+	get remainingLength() {
+		return this.cards.length;
+	}
+
+	deal(hand, count = 1) {
+		if (!Array.isArray(hand)) throw new Error('Deck: Invalid hand to deal cards, must be an Array');
+		if (count > this.cards.length) {
+			console.log('Not enough cards in the deck to deal');
+			return;
+		}
+
+		hand.push(...this.cards.splice(0, count));
+	}
+
+	dealMul(hands, count = 1) {
+		if (count * hands.length > this.cards.length) {
+			console.log('Not enough cards in the deck to deal');
+			return;
+		}
+
+		for (let i = 0; i < count; i++) {
+			hands.forEach(hand => {
+				hand.push(...this.cards.splice(0, 1));
+			});
+		}
+	}
+
+	insert(cards) {
+		this.cards.push(...cards);
+	}
+
+	reset() {
+		this.cards = this.initialCards;
+	}
+
+	shuffle() {
+		for (let i = this.cards.length - 1; i > 0;i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			const temp = this.cards[i];
+			this.cards[i] = this.cards[j];
+			this.cards[j] = temp;
+		}
+	}
+}
+
+
+
 
 const currentDeck = new Deck(0, 1, { cards })
   // 0 Jokers, 1 Deck of Cards, use our rules
