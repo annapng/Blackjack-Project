@@ -1,6 +1,6 @@
+import Rank from './src/rank.js';
 const Card = require('./src/card.js');
 const Deck = require('./src/deck.js');
-import Rank from './src/rank.js';
 const Suit = require('./src/suit.js');
 
 const standard = require('./src/decks/standard.js');
