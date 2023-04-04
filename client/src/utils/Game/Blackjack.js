@@ -23,7 +23,7 @@ function StartGame() {
     let Deck = [];
 
     Deck = DeckCreation();
-    //    console.log(Deck);
+        console.log(Deck);
 
     
 
@@ -76,7 +76,7 @@ function StartGame() {
     
 
         let cardPngs = retrieveCardPNG(Deck.cards);
-      //  console.log(cardPngs);
+        console.log(cardPngs);
 
         let cardArray = [];
 
