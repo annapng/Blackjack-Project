@@ -3,7 +3,17 @@ import React, { useState, useEffect } from 'react';
 function DeckCreation( deck ) {
 
 const cardDeck = require('../../assets/node-card-deck');
-const { Card, Deck, Rank, Suit } = cardDeck;
+const { Card, Deck, Suit } = cardDeck;
+
+class Rank {
+	constructor(_shortName, _longName, _sortNum) {
+		this.shortName = _shortName;
+		this.longName = _longName;
+		this.sortNum = _sortNum;
+
+		Object.freeze(this);
+	}
+}
 
 // Creating the deck with the correct values
 const ranks = [
