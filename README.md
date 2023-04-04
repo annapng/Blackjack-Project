@@ -26,7 +26,7 @@ To install this application follow these steps:
  * npm run develop
 
 ## Usage
-Access the deployed application with the Heroku link:
+Access the deployed application with the Heroku link: https://over-under-21.herokuapp.com/
 
 ![Home Page](./client/src/assets/readmepics/OverUnder21Home.JPG)
 ![Login/SignUp](./client/src/assets/readmepics/Login.JPG)
