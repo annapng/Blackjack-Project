@@ -7,7 +7,7 @@ const { Card, Deck, Rank, Suit } = cardDeck;
 
 // Creating the deck with the correct values
 const ranks = [
-	new Rank('2', 'Two', 2),
+	{shortName: '2', longName: "Two", sortNum: 2},
 	new Rank('3', 'Three', 3),
 	new Rank('4', 'Four', 4),
 	new Rank('5', 'Five', 5),
