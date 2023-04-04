@@ -1,6 +1,6 @@
 //"use strict";
 
-module.exports = class Rank {
+export default class Rank {
 	constructor(_shortName, _longName, _sortNum) {
 		this.shortName = _shortName;
 		this.longName = _longName;
@@ -9,3 +9,10 @@ module.exports = class Rank {
 		Object.freeze(this);
 	}
 }
+
+
+/*module.exports = Rank(shortName, longName, sortNum) {
+	this.shortName = shortName;
+	this.longName = longName;
+	this.sortNum = sortNum;
+}*/
