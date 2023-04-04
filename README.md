@@ -7,8 +7,7 @@
     -[Contributions](#Contributions)
     
     
-#  Title 
-Over-Under21
+# Over-Under21
 
 ##  Description
 Over-Under21 is a fullstack web application that allows the users to play BlackJack the card game, create usernames, keep track of wins, losses, how many games the user has played and enter a brief description on their playstyle. Users must first sign up, then they will be able to login and begin playing. Here the user can see a header with options to view the rules of the game, see the users profile, logout, and return to the game. On the profile page, the user will be able to see their name, add/edit profile info, and see their stats uppdated in real time. In addition the user can return back to the game or delete their account entirely.
