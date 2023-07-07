@@ -10,7 +10,7 @@ return (
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       <div className="toggleButton">
-        <Link className="login" to="/Login">Login/Signup</Link>
+        <Link className="login" to="/Login">Login/Sign Up</Link>
       </div>
       <Footer />
       </header>
