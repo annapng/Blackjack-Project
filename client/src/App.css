@@ -100,10 +100,11 @@
   display: flex;
   flex-wrap: wrap;
   word-break: break-all;
-  width: 100%;
+  width: 50%;
 }
 
 .boxclass {
+  border: 5px solid;
   border-style: solid;
   display: inline-block;
   border-color: #FF5555;
@@ -133,25 +134,41 @@
   word-break: break-all;
 
 }
+.box-class {
+  border: 5px solid;
+}
 
 @media screen and (max-width:480px) { 
   .toggleButton {
+    text-align: center;
     flex-direction: column;
     text-align: center;
     margin-top:50px;    
-    width: 100%;
+    width: 50%;
     display: grid;
+    position: top;
   }
 
   .login {
     display: grid;
     width: 100%;
-    font-size: 50px;
+    font-size: 25px;
+  }
+
+  .loginbox {
+    width: 100%;
+    position: top;
   }
 
   .App-logo {
     /* min-height: 100vh; */
-    width: 80%;
-    height: 60%;
+    width: 50%;
+    text-align: center;
+    position: top;
+    
+  }
+
+  .App-header {
+    flex-direction: column;
   }
 }
